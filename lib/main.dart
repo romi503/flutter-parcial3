@@ -29,7 +29,7 @@ class _WebFlutterState extends State<WebFlutter> {
       cuerpo = utf8.decode(response.bodyBytes);
       final jsonData = jsonDecode(cuerpo);
       for (var item in jsonData) {
-        lista.add(Imagenes(item["title"], item["thumbnailUrl"]));
+        lista.add(Imagenes(item["title"], item["thumbnailUrl"], item["albumId"], item["id"], item["url"]));
       }
     } else {
       throw Exception("Falla en conexion estado 500");
@@ -96,7 +96,10 @@ class _WebFlutterState extends State<WebFlutter> {
                   )
                 ),
               ),
-              Text(itempk.title)
+              Text("title: " + itempk.title),
+              Text("albumId: " + itempk.albumId.toString()),
+              Text("id: " + itempk.id.toString()),
+              Text("url: " + itempk.url),
             ],
           ),
         )
